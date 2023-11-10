@@ -1,7 +1,9 @@
+#api_test.py
+
 import requests
 
 # The endpoint you're going to post to
-url = 'http://localhost:5001/convert'
+url = 'http://localhost:5002/convert'
 
 # The path to the image file you want to convert to text
 file_path = '/workspaces/EY_Image2Text-Service/images/image_from_curl.jpg'
