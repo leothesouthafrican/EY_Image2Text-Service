@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file
+from flask import Flask, request, jsonify
 from pydantic import BaseModel
 from typing import Optional
 import pytesseract
@@ -30,12 +30,7 @@ def convert_image_to_text():
         # Use pytesseract to do OCR on the image
         text = pytesseract.image_to_string(image, lang=valid_image_data.lang)
         
-        # Save the text to a txt file
-        text_filename = 'output.txt'
-        with open(text_filename, 'w') as text_file:
-            text_file.write(text)
-        
-        return send_file(text_filename, as_attachment=True, mimetype='text/plain')
+        return jsonify({"text": text}), 200
     except Exception as e:
         return str(e), 500
 
